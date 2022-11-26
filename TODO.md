@@ -1,0 +1,6 @@
+- [X] Do API request
+- [ ] Setup TypeScript
+- [ ] Save token in separate file (non-versioned)
+- [ ] Implement unit testing
+- [ ] Save data in SQLite db
+- [ ] Schedule to run every x-hours
