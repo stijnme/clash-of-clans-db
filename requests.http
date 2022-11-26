@@ -1,0 +1,4 @@
+# Get info for player with tag #LOLYC9UYQ
+GET https://api.clashofclans.com/v1/players/%23LOLYC9UYQ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer xxx
