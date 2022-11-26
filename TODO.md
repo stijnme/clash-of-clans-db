@@ -1,7 +1,7 @@
 - [X] Do API request
-- [ ] Setup TypeScript
+- [X] Setup TypeScript
   * [X] Init TypeScript
-  * [ ] Generate JavaScript in dedicated directory
+  * [X] Generate JavaScript in dedicated directory
 - [X] Setup ESLint
 - [ ] Retrieve token from separate file (non-versioned)
 - [ ] Implement unit testing
