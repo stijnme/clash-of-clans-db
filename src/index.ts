@@ -1,21 +1,15 @@
-const axios = require('axios').default;
+//const axios = require('axios').default;
+const cocapi = require('./coc_api');
+
 
 async function get_player(): Promise <void> {
     console.log("get_player()");
 
     try {
-      const response:any = await axios.get("/players/%23LOLYC9UYQ", {
-            // Accept headers required due to bug in axios 1.2.0
-            headers: {
-              "Accept": "application/json",
-              "Accept-Encoding": "application/json",
-              "Authorization": "Bearer xxx"
-            },
-            baseURL: "https://api.clashofclans.com/v1"
-          }
-      );
-      console.log("Found player: " + response.data.name + "\n" +
-                  "Clan: " + response.data.clan.name);
+      const api = new cocapi("insert api token here");
+      const data = await api.get("/players/%23LOLYC9UYQ");
+      console.log("Found player: " + data.name + "\n" +
+                  "Clan: " + data.clan.name);
     } catch (error) {
       console.error(error);
     }
