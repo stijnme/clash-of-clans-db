@@ -1,22 +1,24 @@
-import fetch from 'node-fetch';
+const axios = require('axios').default;
 
-async function get_player() {
+async function get_player(): Promise <void> {
     console.log("get_player()");
 
-    const response = await fetch("https://api.clashofclans.com/v1/players/%23LOLYC9UYQ", {
-        "headers": {
-          "accept": "application/json",
-          "authorization": "Bearer xxx"
-        },
-        "body": null,
-        "method": "GET"
-      });
-    const data = await response.json();
-
-    debugger;
-
-    console.log("Found player: " + data.name + "\n" +
-                "Clan: " + data.clan.name);
+    try {
+      const response:any = await axios.get("/players/%23LOLYC9UYQ", {
+            // Accept headers required due to bug in axios 1.2.0
+            headers: {
+              "Accept": "application/json",
+              "Accept-Encoding": "application/json",
+              "Authorization": "Bearer xxx"
+            },
+            baseURL: "https://api.clashofclans.com/v1"
+          }
+      );
+      console.log("Found player: " + response.data.name + "\n" +
+                  "Clan: " + response.data.clan.name);
+    } catch (error) {
+      console.error(error);
+    }
 }
 
 
