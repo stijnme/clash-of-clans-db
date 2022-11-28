@@ -1,21 +1,11 @@
+export { };
+
 //const axios = require('axios').default;
-const cocapi = require('./coc_api');
-const config = require('./config');
+const player = require('./player');
+
+const player1 = new player();
+player1.get("%23LOLYC9UYQ");
+console.log("Found player1: " + player1.name);
 
 
-async function get_player(id:string): Promise <void> {
-    console.log("get_player()");
-
-    try {
-      const api = new cocapi(config.token);
-      const data = await api.get("/players/" + id);
-      console.log("Found player: " + data.name + "\n" +
-                  "Clan: " + data.clan.name);
-    } catch (error) {
-      console.error(error);
-    }
-}
-
-
-get_player("%23LOLYC9UYQ");
-
+//const player2 = new player("%23QPYG9GCJL");
