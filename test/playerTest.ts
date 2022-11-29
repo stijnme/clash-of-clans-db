@@ -39,7 +39,7 @@ const playerTest = require('../src/player');
 
 describe('Retrieve player from API', function(){
 
-    it.skip('check that player #LOLYC9UYQ is MilkSjeik', async function(){
+    it('check that player #LOLYC9UYQ is MilkSjeik', async function(){
         const oPlayer = new playerTest();
         await oPlayer.get("%23LOLYC9UYQ");
         assert.isString(oPlayer.name, 'MilkSjeik.v2');
