@@ -1,5 +1,5 @@
 import { CocAPI } from './coc_api';
-const config = require('./config');
+import Config from './config';
 
 export class Player {
     public tag: string | undefined;
@@ -9,7 +9,8 @@ export class Player {
         console.log("get_player()");
     
         try {
-            const api = new CocAPI(config.token);
+            const api = new CocAPI(Config.token);
+            // TODO: create interface/type for the player data
             const data: any = await api.get("/players/" + tag);
 
             console.log("Found player: " + data.name + "\n" +
