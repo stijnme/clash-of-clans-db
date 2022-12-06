@@ -1,6 +1,6 @@
-const axios = require('axios').default;
+import axios from 'axios';
 
-module.exports = class CocAPI {
+export class CocAPI {
     private token: string;
     private url: string;
 
