@@ -1,10 +1,5 @@
-import { normalize } from "path";
-
-export {};
-
-const Player = require('./player');
-//const PlayersDB = require('./model/players');
-const { Sequelize, DataTypes } = require('sequelize');
+import { Player } from './player';
+import { Sequelize, DataTypes } from 'sequelize';
 
 async function main() {
     const player1 = new Player();
@@ -22,8 +17,8 @@ async function main() {
         // define Players model
         const Players = sequelize.define('Players',
             {
-                tag: { primaryKey:true, allowNull: false, type: Sequelize.STRING },
-                name: { type: Sequelize.STRING },
+                tag: { primaryKey:true, allowNull: false, type: DataTypes.STRING },
+                name: { type: DataTypes.STRING },
             },
             { timestamps: true }
         );
