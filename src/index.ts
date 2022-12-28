@@ -1,12 +1,17 @@
 import { Player } from './player';
-import { Sequelize, DataTypes } from 'sequelize';
+//import { Sequelize, DataTypes } from 'sequelize';
 
 async function main() {
-    const player1 = new Player();
-    await player1.get("%23LOLYC9UYQ");
+//    Player.sync();
+
+//    const player1 = await Player.build();
+    const player1 = new Player("%23LOLYC9UYQ");
+    await player1.get();
     console.log("Found player1: " + player1.name);
 
-    // try sequilize
+
+
+/*     // try sequilize
     if (player1 !== undefined) {
         // define db
         const sequelize = new Sequelize({
@@ -22,6 +27,7 @@ async function main() {
             },
             { timestamps: true }
         );
+
         console.log(Players === sequelize.models.Players);
         await Players.sync(); // create table in DB if needed
 
@@ -33,7 +39,7 @@ async function main() {
         
         // insert/update in db
         Players.upsert(newPlayer);
-    }
+    } */
 }
 
 
