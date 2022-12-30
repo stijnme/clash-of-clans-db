@@ -1,11 +1,6 @@
-import { type } from "os";
-import internal from "stream";
+import { PlayerModel } from "../model/playerModel";
 
 export default interface iAPI {
   get(path: string): Promise<string>;
+  getPlayer(tag: string): Promise<PlayerModel>;
 }
-
-export type apiReponse = {
-  status: number;
-  data: string;
-};

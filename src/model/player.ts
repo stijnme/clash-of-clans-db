@@ -1,8 +1,8 @@
-import { CocAPI } from "./api/coc_api";
-import Config from "./config";
+import { CocAPI } from "../api/coc_api";
+import Config from "../config";
 
 export class Player {
-  public tag: string | undefined;
+  public tag: string;
   public name: string | undefined;
 
   constructor(tag: string) {
@@ -10,15 +10,16 @@ export class Player {
   }
 
   async get(): Promise<void> {
-    console.log("get_player()");
+    console.log("[I] player - get_player()");
 
     try {
       const api = new CocAPI(Config.token);
       // TODO: create interface/type for the player data
-      const data: any = await api.get("/players/" + this.tag);
+      const data: any = await api.getPlayer(this.tag);
 
       console.log(
-        "Found player: " + data.name + "\n" + "Clan: " + data.clan.name
+        //"Found player: " + data.name + "\n" + "Clan: " + data.clan.name
+        "[I] player - Found player: " + data.name
       );
       this.name = data.name;
       this.tag = data.tag;

@@ -1,4 +1,4 @@
-import { Player } from "./player";
+import { Player } from "./model/player";
 //import { Sequelize, DataTypes } from 'sequelize';
 
 async function main() {
@@ -7,7 +7,11 @@ async function main() {
   //    const player1 = await Player.build();
   const player1 = new Player("%23LOLYC9UYQ");
   await player1.get();
-  console.log("Found player1: " + player1.name);
+  console.log("[I] Index - Found player1: " + player1.name);
+
+  const player2 = new Player("%23QPYG9GCJL");
+  await player2.get();
+  console.log("[I] Index - Found player2: " + player2.name);
 
   /*     // try sequilize
     if (player1 !== undefined) {

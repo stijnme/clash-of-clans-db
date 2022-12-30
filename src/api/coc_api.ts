@@ -1,4 +1,5 @@
-import axios, { Axios, AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
+import { PlayerModel } from "../model/playerModel";
 import iAPI from "./api_interface";
 
 export class CocAPI implements iAPI {
@@ -32,5 +33,15 @@ export class CocAPI implements iAPI {
       console.error("[E] " + (error as AxiosError).response?.data);
       return `${(error as AxiosError)?.response?.data}`;
     }
+  }
+
+  async getPlayer(tag: string): Promise<PlayerModel> {
+    const data: any = await this.get("/players/" + tag);
+    let player: PlayerModel = {
+      tag: data.tag,
+      name: data.name,
+    };
+
+    return player;
   }
 }
