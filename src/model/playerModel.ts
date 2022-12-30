@@ -1,4 +1,4 @@
 export interface PlayerModel {
   tag: string;
-  name: string;
+  name: string | undefined;
 }

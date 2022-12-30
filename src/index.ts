@@ -7,7 +7,11 @@ async function main() {
   //    const player1 = await Player.build();
   const player1 = new Player("%23LOLYC9UYQ");
   await player1.get();
-  console.log("[I] Index - Found player1: " + player1.name);
+  if (player1.name === undefined) {
+    console.log("[I] Index - Unable to find player1: " + player1.tag);
+  } else {
+    console.log("[I] Index - Found player1: " + player1.name);
+  }
 
   const player2 = new Player("%23QPYG9GCJL");
   await player2.get();

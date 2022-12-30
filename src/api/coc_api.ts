@@ -30,18 +30,31 @@ export class CocAPI implements iAPI {
       // = 'Invalid authorization: API key does not allow access from IP 109.143.92.56'
       // But .message not allowed by TypeScript?
 
-      console.error("[E] " + (error as AxiosError).response?.data);
-      return `${(error as AxiosError)?.response?.data}`;
+      console.error(
+        "[E] CocAPI - " + ((error as AxiosError).response?.data as any)?.message
+      );
+      //      return `${(error as AxiosError)?.response?.data}`;
+      return Promise.reject(error);
     }
   }
 
   async getPlayer(tag: string): Promise<PlayerModel> {
-    const data: any = await this.get("/players/" + tag);
-    let player: PlayerModel = {
-      tag: data.tag,
-      name: data.name,
-    };
+    let player: PlayerModel;
+    try {
+      const data: any = await this.get("/players/" + tag);
 
+      // Wrap the response into our typed model
+      player = {
+        tag: data.tag,
+        name: data.name,
+      };
+    } catch (error) {
+      // TODO: replace undefined with status flag
+      player = {
+        tag: tag,
+        name: undefined,
+      };
+    }
     return player;
   }
 }

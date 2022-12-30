@@ -10,21 +10,24 @@ export class Player {
   }
 
   async get(): Promise<void> {
-    console.log("[I] player - get_player()");
+    console.log("[I] Player - get_player()");
 
     try {
       const api = new CocAPI(Config.token);
       // TODO: create interface/type for the player data
       const data: any = await api.getPlayer(this.tag);
 
-      console.log(
-        //"Found player: " + data.name + "\n" + "Clan: " + data.clan.name
-        "[I] player - Found player: " + data.name
-      );
+      // TODO: replace with status flag
+      if (data.name !== undefined) {
+        console.log(
+          //"Found player: " + data.name + "\n" + "Clan: " + data.clan.name
+          "[I] Player - Found player: " + data.name
+        );
+      }
       this.name = data.name;
       this.tag = data.tag;
     } catch (error) {
-      console.error(error);
+      console.error("[E] Player - " + error);
     }
   }
 }
