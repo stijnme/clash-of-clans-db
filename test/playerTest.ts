@@ -33,15 +33,13 @@ decreases   decreasesBy     decreasesButNotBy
 // Unit Testing with Mocha and Chai
 //
 
-const assert = require('chai').assert;
-const playerTest = require('../src/player');
+const assert = require("chai").assert;
+import { Player } from "../src/model/player";
 
-
-describe('Retrieve player from API', function(){
-
-    it('check that player #LOLYC9UYQ is MilkSjeik', async function(){
-        const oPlayer = new playerTest();
-        await oPlayer.get("%23LOLYC9UYQ");
-        assert.isString(oPlayer.name, 'MilkSjeik.v2');
-    });
+describe("Retrieve player from API", function () {
+  it("Check that player #LOLYC9UYQ is MilkSjeik", async function () {
+    const oPlayer = new Player("%23LOLYC9UYQ");
+    await oPlayer.get();
+    assert.strictEqual(oPlayer.name, "MilkSjeik");
+  });
 });

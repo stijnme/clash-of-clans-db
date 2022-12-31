@@ -1,17 +1,24 @@
-import { normalize } from "path";
-
-export {};
-
-const Player = require('./player');
-//const PlayersDB = require('./model/players');
-const { Sequelize, DataTypes } = require('sequelize');
+import { Player } from "./model/player";
+//import { Sequelize, DataTypes } from 'sequelize';
 
 async function main() {
-    const player1 = new Player();
-    await player1.get("%23LOLYC9UYQ");
-    console.log("Found player1: " + player1.name);
+  //    Player.sync();
 
-    // try sequilize
+  //    const player1 = await Player.build();
+  const player1 = new Player("%23LOLYC9UYQ");
+  await player1.get();
+  if (player1.name === undefined) {
+    console.log("[I] Index - Unable to find player1: " + player1.tag);
+  } else {
+    console.log("[I] Index - Found player1: " + player1.name);
+  }
+  player1.save();
+
+  const player2 = new Player("%23QPYG9GCJL");
+  await player2.get();
+  console.log("[I] Index - Found player2: " + player2.name);
+
+  /*     // try sequilize
     if (player1 !== undefined) {
         // define db
         const sequelize = new Sequelize({
@@ -22,11 +29,12 @@ async function main() {
         // define Players model
         const Players = sequelize.define('Players',
             {
-                tag: { primaryKey:true, allowNull: false, type: Sequelize.STRING },
-                name: { type: Sequelize.STRING },
+                tag: { primaryKey:true, allowNull: false, type: DataTypes.STRING },
+                name: { type: DataTypes.STRING },
             },
             { timestamps: true }
         );
+
         console.log(Players === sequelize.models.Players);
         await Players.sync(); // create table in DB if needed
 
@@ -38,8 +46,7 @@ async function main() {
         
         // insert/update in db
         Players.upsert(newPlayer);
-    }
+    } */
 }
-
 
 main();
