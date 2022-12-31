@@ -40,6 +40,6 @@ describe("Retrieve player from API", function () {
   it("Check that player #LOLYC9UYQ is MilkSjeik", async function () {
     const oPlayer = new Player("%23LOLYC9UYQ");
     await oPlayer.get();
-    assert.isString(oPlayer.name, "TestFault");
+    assert.strictEqual(oPlayer.name, "MilkSjeik");
   });
 });
