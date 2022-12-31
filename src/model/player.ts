@@ -1,5 +1,6 @@
 import { CocAPI } from "../api/coc_api";
 import Config from "../config";
+import { PlayerModel } from "./playerModel";
 
 export class Player {
   public tag: string;
@@ -13,9 +14,9 @@ export class Player {
     console.log("[I] Player - get_player()");
 
     try {
+      // TODO: move token to api
       const api = new CocAPI(Config.token);
-      // TODO: create interface/type for the player data
-      const data: any = await api.getPlayer(this.tag);
+      const data: PlayerModel = await api.getPlayer(this.tag);
 
       // TODO: replace with status flag
       if (data.name !== undefined) {
@@ -29,6 +30,11 @@ export class Player {
     } catch (error) {
       console.error("[E] Player - " + error);
     }
+  }
+
+  save(): void {
+    console.info("[I] Player - save()");
+    // TODO: call db to save model
   }
 }
 

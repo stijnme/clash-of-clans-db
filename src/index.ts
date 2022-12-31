@@ -12,6 +12,7 @@ async function main() {
   } else {
     console.log("[I] Index - Found player1: " + player1.name);
   }
+  player1.save();
 
   const player2 = new Player("%23QPYG9GCJL");
   await player2.get();
