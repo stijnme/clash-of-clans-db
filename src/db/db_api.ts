@@ -13,7 +13,8 @@ export class DbAPI {
 
   init() {
     console.info("[I] DbAPI - init()");
-    this.db.addModels([__dirname + "/dist/src/db/*.model.ts"]);
+    console.debug("[D] DbAPI - dirname: " + __dirname);
+    this.db.addModels([__dirname + "/*.model.js"]);
     this.db.sync({ force: true });
   }
 }
