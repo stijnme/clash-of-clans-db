@@ -35,10 +35,15 @@ decreases   decreasesBy     decreasesButNotBy
 
 const assert = require("chai").assert;
 import { Player } from "../src/model/player";
+import { CocAPI } from "../src/api/coc_api";
+import Config from "../src/config";
+
+// TODO: move to specific prepare function?
+const api = new CocAPI(Config.token);
 
 describe("Retrieve player from API", function () {
   it("Check that player #LOLYC9UYQ is MilkSjeik", async function () {
-    const oPlayer = new Player("%23LOLYC9UYQ");
+    const oPlayer = new Player("%23LOLYC9UYQ", api);
     await oPlayer.get();
     assert.strictEqual(oPlayer.name, "MilkSjeik");
   });

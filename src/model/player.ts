@@ -1,13 +1,17 @@
 import { CocAPI } from "../api/coc_api";
-import Config from "../config";
+import { DbAPI } from "../db/db_api";
 import { PlayerModel } from "./playerModel";
 
 export class Player {
   public tag: string;
   public name: string | undefined;
+  private api: CocAPI;
+  private db: DbAPI | undefined;
 
-  constructor(tag: string) {
+  constructor(tag: string, api: CocAPI, db?: DbAPI) {
     this.tag = tag;
+    this.api = api;
+    this.db = db;
   }
 
   async get(): Promise<void> {
@@ -15,8 +19,7 @@ export class Player {
 
     try {
       // TODO: move token to api
-      const api = new CocAPI(Config.token);
-      const data: PlayerModel = await api.getPlayer(this.tag);
+      const data: PlayerModel = await this.api.getPlayer(this.tag);
 
       // TODO: replace with status flag
       if (data.name !== undefined) {
@@ -34,7 +37,11 @@ export class Player {
 
   save(): void {
     console.info("[I] Player - save()");
-    // TODO: call db to save model
+    if (this.db !== undefined) {
+      // TODO: call db to save model
+      this.db.savePlayer(this);
+    }
+    //
   }
 }
 
