@@ -5,11 +5,10 @@ import { Player } from "./model/player";
 //import { Sequelize, DataTypes } from 'sequelize';
 
 async function main() {
-  //    Player.sync();
+  // Init
   const api = new CocAPI(Config.token);
   const db = new DbAPI();
 
-  //    const player1 = await Player.build();
   const player1 = new Player("%23LOLYC9UYQ", api, db);
   await player1.get();
   if (player1.name === undefined) {
