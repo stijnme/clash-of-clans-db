@@ -1,4 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
+import { PlayerModel } from "../model/playerModel";
+import Player from "./player.model";
 
 export class DbAPI {
   private db: Sequelize;
@@ -16,5 +18,13 @@ export class DbAPI {
     console.debug("[D] DbAPI - dirname: " + __dirname);
     this.db.addModels([__dirname + "/*.model.js"]);
     this.db.sync({ force: true });
+  }
+
+  savePlayer(oPlayer: PlayerModel) {
+    const player = {
+      tag: oPlayer.tag,
+      name: oPlayer.name,
+    };
+    Player.upsert(player);
   }
 }
