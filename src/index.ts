@@ -23,35 +23,7 @@ async function main() {
   console.log("[I] Index - Found player2: " + player2.name);
 
   player1.save();
-  /*     // try sequilize
-    if (player1 !== undefined) {
-        // define db
-        const sequelize = new Sequelize({
-            dialect: 'sqlite',
-            storage: './db/ClashOfClans.db'
-        });
-
-        // define Players model
-        const Players = sequelize.define('Players',
-            {
-                tag: { primaryKey:true, allowNull: false, type: DataTypes.STRING },
-                name: { type: DataTypes.STRING },
-            },
-            { timestamps: true }
-        );
-
-        console.log(Players === sequelize.models.Players);
-        await Players.sync(); // create table in DB if needed
-
-        // create new player object
-        const newPlayer = {
-            tag: player1.tag,
-            name: player1.name
-        };
-        
-        // insert/update in db
-        Players.upsert(newPlayer);
-    } */
+  player2.save();
 }
 
 main();
