@@ -7,4 +7,7 @@ export default class Player extends Model {
 
   @Column
   name: string;
+
+  @Column
+  clanTag: string;
 }

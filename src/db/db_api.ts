@@ -24,6 +24,7 @@ export class DbAPI {
     const player = {
       tag: oPlayer.tag,
       name: oPlayer.name,
+      clanTag: oPlayer.clanTag,
     };
     Player.upsert(player);
   }

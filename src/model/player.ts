@@ -5,6 +5,7 @@ import { PlayerModel } from "./playerModel";
 export class Player {
   public tag: string;
   public name: string | undefined;
+  public clanTag: string | undefined;
   private api: CocAPI;
   private db: DbAPI | undefined;
 
@@ -30,6 +31,7 @@ export class Player {
       }
       this.name = data.name;
       this.tag = data.tag;
+      this.clanTag = data.clanTag;
     } catch (error) {
       console.error("[E] Player - " + error);
     }
