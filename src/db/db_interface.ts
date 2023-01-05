@@ -1,8 +1,8 @@
-import { Sequelize } from "sequelize-typescript";
+//import { Sequelize } from "sequelize-typescript";
 
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "./db/ClashOfClans.db",
-});
+//const sequelize = new Sequelize({
+//  dialect: "sqlite",
+//  storage: "./db/ClashOfClans.db",
+//});
 
-sequelize.addModels(["*.model.ts"]);
+//sequelize.addModels(["*.model.ts"]);

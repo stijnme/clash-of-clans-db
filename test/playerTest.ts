@@ -34,17 +34,20 @@ decreases   decreasesBy     decreasesButNotBy
 //
 
 const assert = require("chai").assert;
-import { Player } from "../src/model/player";
 import { CocAPI } from "../src/api/coc_api";
 import Config from "../src/config";
+import { DbAPI } from "../src/db/db_api";
+import { PlayerController } from "../src/model/player/player.controller";
 
 // TODO: move to specific prepare function?
 const api = new CocAPI(Config.token);
+const db = new DbAPI();
 
 describe("Retrieve player from API", function () {
   it("Check that player #LOLYC9UYQ is MilkSjeik", async function () {
-    const oPlayer = new Player("%23LOLYC9UYQ", api);
-    await oPlayer.get();
-    assert.strictEqual(oPlayer.name, "MilkSjeik");
+    //    const oPlayer = new Player("%23LOLYC9UYQ", api);
+    const oPlayerController = new PlayerController("%23LOLYC9UYQ", api, db);
+    await oPlayerController.get();
+    assert.strictEqual(oPlayerController.oPlayer.name, "MilkSjeik");
   });
 });

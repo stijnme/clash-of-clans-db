@@ -1,4 +1,4 @@
-import { PlayerModel } from "../model/playerModel";
+import { PlayerModel } from "../model/player/player.model";
 
 export default interface iAPI {
   get(path: string): Promise<string>;

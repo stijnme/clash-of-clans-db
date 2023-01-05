@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { PlayerModel } from "../model/playerModel";
+import { PlayerModel } from "../model/player/player.model";
 import iAPI from "./api_interface";
 
 export class CocAPI implements iAPI {
