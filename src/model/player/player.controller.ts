@@ -9,7 +9,7 @@ export class PlayerController {
   private db: DbAPI | undefined;
 
   constructor(tag: string, api: CocAPI, db?: DbAPI) {
-    this.oPlayer = { tag: tag };
+    this.oPlayer = { tag: tag, apiRetrieved: false };
     this.api = api;
     this.db = db;
   }
@@ -28,10 +28,10 @@ export class PlayerController {
           "[I] Player - Found player: " + data.name
         );
       }
-      this.oPlayer.name = data.name;
-      this.oPlayer.clanTag = data.clanTag;
+      this.oPlayer = data;
     } catch (error) {
       console.error("[E] Player - " + error);
+      this.oPlayer.apiRetrieved = false;
     }
   }
 

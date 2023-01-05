@@ -21,8 +21,8 @@ async function main() {
   await player2.get();
   console.log("[I] Index - Found player2: " + player2.oPlayer.name);
 
-  player1.save();
-  player2.save();
+  if (player1.oPlayer.apiRetrieved) player1.save();
+  if (player2.oPlayer.apiRetrieved) player2.save();
 }
 
 main();

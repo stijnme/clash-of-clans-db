@@ -48,16 +48,15 @@ export class CocAPI implements iAPI {
         tag: data.tag,
         name: data.name,
         clanTag: data.clan.tag,
+        apiRetrieved: true,
       };
     } catch (error) {
-      // TODO: replace undefined with status flag
       player = {
         tag: tag,
-        name: undefined,
-        clanTag: undefined,
+        apiRetrieved: false,
       };
     }
-    console.debug("[D] CocAPI - getPlayer(): found " + JSON.stringify(player));
+    console.debug("[D] CocAPI - getPlayer(): " + JSON.stringify(player));
     return player;
   }
 }
