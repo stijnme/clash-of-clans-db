@@ -21,7 +21,7 @@ export class DbAPI {
   }
 
   // TODO: change input type so remapping isn't required anymore
-  // or move function to factory?
+  // or move function to controller?
   savePlayer(oPlayer: PlayerModel) {
     const player = {
       tag: oPlayer.tag,
