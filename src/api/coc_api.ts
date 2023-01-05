@@ -48,6 +48,8 @@ export class CocAPI implements iAPI {
         tag: data.tag,
         name: data.name,
         clanTag: data.clan.tag,
+        townHallLevel: data.townHallLevel,
+        warPreference: data.warPreference,
         apiRetrieved: true,
       };
     } catch (error) {

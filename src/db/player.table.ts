@@ -4,10 +4,12 @@ import { Table, Column, Model } from "sequelize-typescript";
 export default class Player extends Model {
   @Column
   declare tag: string;
-
   @Column
   declare name: string;
-
   @Column
   declare clanTag: string;
+  @Column
+  declare townHallLevel: string;
+  @Column
+  declare warPreference: string;
 }

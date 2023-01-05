@@ -2,7 +2,7 @@ export interface PlayerModel {
   tag: string;
   name?: string;
   clanTag?: string;
-  //  townHallLevel: string | undefined;
+  townHallLevel?: string;
   warPreference?: string;
   apiRetrieved: boolean;
 }
