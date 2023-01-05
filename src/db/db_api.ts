@@ -17,7 +17,7 @@ export class DbAPI {
     console.info("[I] DbAPI - init()");
     console.debug("[D] DbAPI - dirname: " + __dirname);
     this.db.addModels([__dirname + "/*.table.*"]);
-    this.db.sync({ force: true });
+    this.db.sync({ alter: true }); // perform changes when model is updated
   }
 
   // TODO: change input type so remapping isn't required anymore
