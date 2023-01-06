@@ -7,7 +7,7 @@ import { ClanController } from "../src/model/clan/clan.controller";
 // TODO: move to specific prepare function?
 const api = new CocAPI(Config.token);
 
-describe("Retrieve player from API", function () {
+describe("Retrieve clan from API", function () {
   it("Check that clan #20LCQ2CR8 is Yoshi Island", async function () {
     const oController = new ClanController("%2320LCQ2CR8", api);
     await oController.get();
