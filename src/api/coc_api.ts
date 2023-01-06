@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { PlayerModel } from "../model/player/player.model";
+import { ClanModel } from "../model/clan/clan.model";
 import iAPI from "./api_interface";
 
 export class CocAPI implements iAPI {
@@ -60,5 +61,21 @@ export class CocAPI implements iAPI {
     }
     console.debug("[D] CocAPI - getPlayer(): " + JSON.stringify(player));
     return player;
+  }
+
+  async getClan(tag: string): Promise<ClanModel> {
+    let clan: ClanModel;
+    try {
+      const data: any = await this.get("/clans/" + tag);
+      clan = {
+        tag: data.tag,
+        name: data.name,
+        apiRetrieved: true,
+      };
+    } catch (error) {
+      clan = { tag: tag, apiRetrieved: false };
+    }
+    console.debug("[D] CocAPI - getClan(): " + JSON.stringify(clan));
+    return clan;
   }
 }
