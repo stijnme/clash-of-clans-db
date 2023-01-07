@@ -18,17 +18,14 @@ export class PlayerController {
     console.log("[I] Player - get_player()");
 
     try {
-      // TODO: move token to api
       const data: PlayerModel = await this.api.getPlayer(this.oPlayer.tag);
 
-      // TODO: replace with status flag
-      if (data.name !== undefined) {
+      if (data.apiRetrieved) {
         console.log(
-          //"Found player: " + data.name + "\n" + "Clan: " + data.clan.name
           "[I] Player - Found player: " + data.name
         );
+        this.oPlayer = data;
       }
-      this.oPlayer = data;
     } catch (error) {
       console.error("[E] Player - " + error);
       this.oPlayer.apiRetrieved = false;
@@ -39,9 +36,7 @@ export class PlayerController {
     console.info("[I] Player - save()");
     if (this.db !== undefined) {
       // call db to save model
-      // TODO: rework to reduce maintenance
       this.db.savePlayer(this.oPlayer);
     }
-    //
   }
 }
