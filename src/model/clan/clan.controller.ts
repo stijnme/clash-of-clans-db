@@ -36,7 +36,7 @@ export class ClanController {
   save(): void {
     console.info("[I] ClanController - save()");
     if (this.db !== undefined) {
-      // TODO: call db to save model
+      this.db.saveClan(this.oClan);
     }
   }
 }

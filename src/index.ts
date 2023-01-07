@@ -10,6 +10,13 @@ async function main() {
   const api = new CocAPI(Config.token);
   const db = new DbAPI();
 
+  const clan = new ClanController("#20LCQ2CR8", api, db);
+  await clan.get();
+
+  if (clan.oClan.apiRetrieved) {
+    clan.save();
+  }
+
   const player1 = new PlayerController("%23LOLYC9UYQ", api, db);
   await player1.get();
   if (player1.oPlayer.name === undefined) {

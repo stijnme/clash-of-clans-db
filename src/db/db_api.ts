@@ -1,6 +1,8 @@
 import { Sequelize } from "sequelize-typescript";
 import { PlayerModel } from "../model/player/player.model";
 import Player from "../db/player.table";
+import { ClanModel } from "../model/clan/clan.model";
+import Clan from "../db/clan.table";
 
 export class DbAPI {
   private db: Sequelize;
@@ -33,5 +35,13 @@ export class DbAPI {
       townHallLevel: oPlayer.townHallLevel,
     };
     Player.upsert(player);
+  }
+
+  saveClan(oClan: ClanModel) {
+    const clan = {
+      tag: oClan.tag,
+      name: oClan.name,
+    };
+    Clan.upsert(clan);
   }
 }
