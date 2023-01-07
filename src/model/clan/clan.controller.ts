@@ -17,7 +17,6 @@ export class ClanController {
     console.log("[I] ClanController- get()");
 
     try {
-      // TODO: move token to api
       const data: ClanModel = await this.api.getClan(this.oClan.tag);
 
       // TODO: replace with status flag
