@@ -10,32 +10,26 @@ async function main() {
   const api = new CocAPI(Config.token);
   const db = new DbAPI();
 
+  // TODO: replace hardcoded clan tag
   const clan = new ClanController("#20LCQ2CR8", api, db);
   await clan.get();
 
   if (clan.oClan.apiRetrieved) {
     clan.save();
-  }
 
-  const player1 = new PlayerController("%23LOLYC9UYQ", api, db);
-  await player1.get();
-  if (player1.oPlayer.name === undefined) {
-    console.log("[I] Index - Unable to find player1: " + player1.oPlayer.tag);
-  } else {
-    console.log("[I] Index - Found player1: " + player1.oPlayer.name);
-  }
-
-  const player2 = new PlayerController("%23QPYG9GCJL", api, db);
-  await player2.get();
-  console.log("[I] Index - Found player2: " + player2.oPlayer.name);
-
-  if (player1.oPlayer.apiRetrieved) player1.save();
-  if (player2.oPlayer.apiRetrieved) player2.save();
-
-  if (player1.oPlayer.clanTag) {
-    const clan = new ClanController(player1.oPlayer.clanTag, api);
-    await clan.get();
-    console.log("[I] Index - Found clan of player1: " + clan.oClan.name);
+    // loop members
+    if (clan.oClan.memberList) {
+      for (const member of clan.oClan.memberList) {
+        console.log("[I] Index - Found member: " + member.name);
+        const player = new PlayerController(member.tag, api, db);
+        await player.get();
+        if (player.oPlayer.apiRetrieved) {
+          player.save();
+        } else {
+          console.log("[E] Index - Unable to find player: " + member.tag);
+        }
+      }
+    }
   }
 }
 
