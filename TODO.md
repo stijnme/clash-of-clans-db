@@ -22,7 +22,7 @@
   - [ ] Proper imports
 - [ ] Schedule to run every x-hours
 - [ ] Add cli interface
-- [ ] Replace `#` with `%22`
+- [x] Replace `#` with `%23`
 
 Ideas:
 

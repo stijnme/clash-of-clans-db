@@ -2,6 +2,7 @@ import { CocAPI } from "./api/coc_api";
 import { DbAPI } from "./db/db_api";
 import Config from "./config";
 import { PlayerController } from "./model/player/player.controller";
+import { ClanController } from "./model/clan/clan.controller";
 //import { Sequelize, DataTypes } from 'sequelize';
 
 async function main() {
@@ -23,6 +24,12 @@ async function main() {
 
   if (player1.oPlayer.apiRetrieved) player1.save();
   if (player2.oPlayer.apiRetrieved) player2.save();
+
+  if (player1.oPlayer.clanTag) {
+    const clan = new ClanController(player1.oPlayer.clanTag, api);
+    await clan.get();
+    console.log("[I] Index - Found clan of player1: " + clan.oClan.name);
+  }
 }
 
 main();

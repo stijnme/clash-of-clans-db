@@ -9,7 +9,7 @@ const api = new CocAPI(Config.token);
 
 describe("Retrieve clan from API", function () {
   it("Check that clan #20LCQ2CR8 is Yoshi Island", async function () {
-    const oController = new ClanController("%2320LCQ2CR8", api);
+    const oController = new ClanController("#20LCQ2CR8", api);
     await oController.get();
     assert.strictEqual(oController.oClan.name, "Yoshi Island");
   });

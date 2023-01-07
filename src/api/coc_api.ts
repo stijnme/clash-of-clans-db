@@ -15,6 +15,7 @@ export class CocAPI implements iAPI {
   // TODO: return data with status code
   async get(path: string): Promise<string> {
     try {
+      path = path.replace("#", "%23");
       const response: any = await axios.get(path, {
         // Accept headers required due to bug in axios 1.2.0
         headers: {
@@ -66,6 +67,7 @@ export class CocAPI implements iAPI {
   async getClan(tag: string): Promise<ClanModel> {
     let clan: ClanModel;
     try {
+      console.debug("[D] CocAPI - getClan: /clans/" + tag);
       const data: any = await this.get("/clans/" + tag);
       clan = {
         tag: data.tag,

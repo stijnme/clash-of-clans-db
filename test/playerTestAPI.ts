@@ -46,7 +46,7 @@ const db = new DbAPI();
 describe("Retrieve player from API", function () {
   it("Check that player #LOLYC9UYQ is MilkSjeik", async function () {
     //    const oPlayer = new Player("%23LOLYC9UYQ", api);
-    const oPlayerController = new PlayerController("%23LOLYC9UYQ", api, db);
+    const oPlayerController = new PlayerController("#LOLYC9UYQ", api, db);
     await oPlayerController.get();
     assert.strictEqual(oPlayerController.oPlayer.name, "MilkSjeik");
   });
