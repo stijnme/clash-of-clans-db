@@ -9,7 +9,11 @@ export default class Player extends Model {
   @Column
   declare clanTag: string;
   @Column
-  declare townHallLevel: string;
+  declare townHallLevel: number;
   @Column
   declare warPreference: string;
+  @Column
+  declare donations: number;
+  @Column
+  declare donationsReceived: number;
 }

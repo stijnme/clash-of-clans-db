@@ -27,6 +27,8 @@ export class DbAPI {
       tag: oPlayer.tag,
       name: oPlayer.name,
       clanTag: oPlayer.clanTag,
+      donations: oPlayer.donations,
+      donationsReceived: oPlayer.donationsReceived,
       warPreference: oPlayer.warPreference,
       townHallLevel: oPlayer.townHallLevel,
     };
