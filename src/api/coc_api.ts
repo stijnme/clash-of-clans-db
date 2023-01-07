@@ -74,6 +74,7 @@ export class CocAPI implements iAPI {
       clan = {
         tag: data.tag,
         name: data.name,
+        memberList: data.memberList,
         apiRetrieved: true,
       };
     } catch (error) {
