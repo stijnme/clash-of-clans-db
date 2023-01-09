@@ -25,6 +25,7 @@ async function main() {
         await player.get();
         if (player.oPlayer.apiRetrieved) {
           player.save();
+          // TODO: write to Google Spreadsheet
         } else {
           console.log("[E] Index - Unable to find player: " + member.tag);
         }
