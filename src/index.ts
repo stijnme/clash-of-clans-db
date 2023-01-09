@@ -4,6 +4,8 @@ import Config from "./config";
 import { PlayerController } from "./model/player/player.controller";
 import { ClanController } from "./model/clan/clan.controller";
 //import { Sequelize, DataTypes } from 'sequelize';
+import { SpreadsheetAPI } from "../src/gsheet/spreadsheet_api";
+import { PlayerSpreadsheet } from "./gsheet/player.data";
 
 async function main() {
   // Init
@@ -17,6 +19,10 @@ async function main() {
   if (clan.oClan.apiRetrieved) {
     clan.save();
 
+    const gapi = new SpreadsheetAPI();
+    const playerSheet = new PlayerSpreadsheet(gapi.doc);
+    await playerSheet.addSheet();
+
     // loop members
     if (clan.oClan.memberList) {
       for (const member of clan.oClan.memberList) {
@@ -26,6 +32,7 @@ async function main() {
         if (player.oPlayer.apiRetrieved) {
           player.save();
           // TODO: write to Google Spreadsheet
+          await playerSheet.addPlayer(player.oPlayer);
         } else {
           console.log("[E] Index - Unable to find player: " + member.tag);
         }

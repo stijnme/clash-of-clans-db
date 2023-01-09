@@ -5,7 +5,7 @@ import {
 
 export class SpreadsheetAPI {
   private creds: ServiceAccountCredentials;
-  private doc: GoogleSpreadsheet;
+  public doc: GoogleSpreadsheet;
 
   constructor() {
     // or preferably, load that info from env vars / config instead of the file
