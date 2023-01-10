@@ -36,18 +36,6 @@ export class PlayerSpreadsheet {
     });
   }
 
-  async addDummyData() {
-    // append rows
-    const larryRow = await this.sheet.addRow({
-      name: "Larry Page",
-      email: "larry@google.com",
-    });
-    const moreRows = await this.sheet.addRows([
-      { name: "Sergey Brin", email: "sergey@google.com" },
-      { name: "Eric Schmidt", email: "eric@google.com" },
-    ]);
-  }
-
   async addPlayer(oPlayer: PlayerModel) {
     await this.sheet.addRow({
       tag: oPlayer.tag,
