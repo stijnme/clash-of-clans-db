@@ -30,6 +30,7 @@ export class PlayerSpreadsheet {
         "donationsReceived",
         "townHallLevel",
         "warPreference",
+        "retrievalTimestamp",
       ],
       title: "API-PlayerData",
     });
@@ -61,6 +62,7 @@ export class PlayerSpreadsheet {
         oPlayer.townHallLevel === undefined ? "" : oPlayer.townHallLevel,
       warPreference:
         oPlayer.warPreference === undefined ? "" : oPlayer.warPreference,
+      retrievalTimestamp: new Date().toUTCString(),
     });
   }
 }
