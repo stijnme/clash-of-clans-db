@@ -19,7 +19,16 @@ export class PlayerSpreadsheet {
   //   - Add player data
   //
   // - Add create/retrieval/update date
-  async addSheet() {
+  async getSheet(sheetTitle: string) {
+    this.sheet = this.doc.sheetsByTitle[sheetTitle];
+    if (this.sheet) {
+      console.debug("[D] - PlayerDataSheet: found sheet!");
+    } else {
+      await this.addSheet(sheetTitle);
+    }
+  }
+
+  async addSheet(sheetTitle: string) {
     // create a sheet and set the header row
     this.sheet = await this.doc.addSheet({
       headerValues: [
@@ -32,7 +41,7 @@ export class PlayerSpreadsheet {
         "warPreference",
         "retrievalTimestamp",
       ],
-      title: "API-PlayerData",
+      title: sheetTitle,
     });
   }
 

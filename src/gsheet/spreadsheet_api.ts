@@ -10,13 +10,12 @@ export class SpreadsheetAPI {
   constructor() {
     // or preferably, load that info from env vars / config instead of the file
     this.creds = require("../clashofclans-database-4cb0ec1f29d0.json"); // authentication of the service user
-    this.loadDoc();
   }
 
-  private async loadDoc() {
+  public async loadDoc() {
     this.doc = new GoogleSpreadsheet(
       // TODO: make following hardcoded value variable
-      "10cRyo1IOVh5fQmpuH34JnVGYIIRWhvPe27WLjyXpBrw"
+      "10cRyo1IOVh5fQmpuH34JnVGYIIRWhvPe27WLjyXpBrw" // test API
     );
 
     // TODO: try catch
@@ -26,10 +25,10 @@ export class SpreadsheetAPI {
     // client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
     // private_key: process.env.GOOGLE_PRIVATE_KEY,
     // });
+    await this.doc.loadInfo(); // loads document properties and worksheets
   }
 
   async printDocInfo() {
-    await this.doc.loadInfo(); // loads document properties and worksheets
     console.log(this.doc.title);
 
     //  const dataSheet = this.doc.sheetsById("API Data");

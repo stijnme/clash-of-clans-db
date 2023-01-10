@@ -20,8 +20,9 @@ async function main() {
     clan.save();
 
     const gapi = new SpreadsheetAPI();
+    await gapi.loadDoc();
     const playerSheet = new PlayerSpreadsheet(gapi.doc);
-    await playerSheet.addSheet();
+    await playerSheet.getSheet("API-PlayerData");
 
     // loop members
     if (clan.oClan.memberList) {
@@ -31,7 +32,7 @@ async function main() {
         await player.get();
         if (player.oPlayer.apiRetrieved) {
           player.save();
-          // TODO: write to Google Spreadsheet
+          // write to Google Spreadsheet
           await playerSheet.addPlayer(player.oPlayer);
         } else {
           console.log("[E] Index - Unable to find player: " + member.tag);
