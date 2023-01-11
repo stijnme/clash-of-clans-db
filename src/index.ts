@@ -20,7 +20,7 @@ async function main() {
     clan.save();
 
     const gapi = new SpreadsheetAPI();
-    await gapi.loadDoc();
+    await gapi.loadDoc("10cRyo1IOVh5fQmpuH34JnVGYIIRWhvPe27WLjyXpBrw"); // = TestAPI doc
     const playerSheet = new PlayerSpreadsheet(gapi.doc);
     await playerSheet.getSheet("API-PlayerData");
 

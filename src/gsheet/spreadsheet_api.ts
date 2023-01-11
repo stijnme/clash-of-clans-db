@@ -12,11 +12,8 @@ export class SpreadsheetAPI {
     this.creds = require("../clashofclans-database-4cb0ec1f29d0.json"); // authentication of the service user
   }
 
-  public async loadDoc() {
-    this.doc = new GoogleSpreadsheet(
-      // TODO: make following hardcoded value variable
-      "10cRyo1IOVh5fQmpuH34JnVGYIIRWhvPe27WLjyXpBrw" // test API
-    );
+  public async loadDoc(docId: string) {
+    this.doc = new GoogleSpreadsheet(docId);
 
     // TODO: try catch
     await this.doc.useServiceAccountAuth(this.creds);
