@@ -22,6 +22,7 @@
   - [x] Proper imports
 - [ ] Schedule to run every x-hours
 - [ ] Add cli interface
+  - [ ] Or Discord bot?
 - [x] Replace `#` with `%23`
 
 # Clan Requests
@@ -29,14 +30,13 @@
 These requests are made to make the gathering of source data for the clan Google Spreadsheet easier.
 
 - [x] Player donations
-- [ ] Clan games
+- [x] Clan games
   > How does Clan Games Scoreboard work?
   > Clan Games points can not be obtained directly! It is only possible by comparing Games Champion achievement.
   > Our system pulls everyone's Games Champion achievement at the beginning of Clan Games and compares every 30-60 minutes.
-- [ ] Get an output format to copy paste into the Google Spreadsheet document
-  - [ ] Google Docs API?
-  - [ ] Output sqlite?
-  - [ ] Text file?
+  - [ ] Also add extra fields to sqlite db
+- [x] Get an output format to copy paste into the Google Spreadsheet document
+  - [x] Google Docs API?
   - [ ] Use Google BigQuery?
 
 # Ideas
