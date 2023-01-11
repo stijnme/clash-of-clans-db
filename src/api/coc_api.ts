@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { PlayerModel } from "../model/player/player.model";
+import { PlayerModel, PlayerAchievement } from "../model/player/player.model";
 import { ClanModel } from "../model/clan/clan.model";
 import iAPI from "./api_interface";
 
@@ -44,6 +44,13 @@ export class CocAPI implements iAPI {
     let player: PlayerModel;
     try {
       const data: any = await this.get("/players/" + tag);
+      // Lookup Clan Game points
+      const clanGameScore = data.achievements.filter(
+        (achievement: PlayerAchievement) => {
+          // TODO: Make constant of achievement name
+          return achievement.name === "Games Champion";
+        }
+      )[0].value;
 
       // Wrap the response into our typed model
       player = {
@@ -54,6 +61,8 @@ export class CocAPI implements iAPI {
         donationsReceived: data.donationsReceived,
         townHallLevel: data.townHallLevel,
         warPreference: data.warPreference,
+        clanGames: clanGameScore,
+        retrievalTimestamp: new Date(),
         apiRetrieved: true,
       };
     } catch (error) {

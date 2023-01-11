@@ -39,6 +39,7 @@ export class PlayerSpreadsheet {
         "donationsReceived",
         "townHallLevel",
         "warPreference",
+        "clanGames",
         "retrievalTimestamp",
       ],
       title: sheetTitle,
@@ -59,7 +60,11 @@ export class PlayerSpreadsheet {
         oPlayer.townHallLevel === undefined ? "" : oPlayer.townHallLevel,
       warPreference:
         oPlayer.warPreference === undefined ? "" : oPlayer.warPreference,
-      retrievalTimestamp: new Date().toUTCString(),
+      clanGames: oPlayer.clanGames === undefined ? "" : oPlayer.clanGames,
+      retrievalTimestamp:
+        oPlayer.retrievalTimestamp === undefined
+          ? new Date().toUTCString()
+          : oPlayer.retrievalTimestamp.toUTCString(),
     });
   }
 }
