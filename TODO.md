@@ -51,3 +51,7 @@ TODO: move this to a contribute file
 
 Check:
 [ ] https://github.com/suksant/sequelize-typescript-examples/blob/master/sequelize-express/src/models/product-model.ts
+
+# Hosting
+
+- [ ] Free Oracle cloud tier ?
