@@ -1,8 +1,10 @@
 import {
   GoogleSpreadsheet,
+  GoogleSpreadsheetRow,
   GoogleSpreadsheetWorksheet,
 } from "google-spreadsheet";
 import { PlayerModel } from "../model/player/player.model";
+import { SpreadsheetAPI } from "./spreadsheet_api";
 
 export class PlayerSpreadsheet {
   private doc: GoogleSpreadsheet;
@@ -47,7 +49,12 @@ export class PlayerSpreadsheet {
   }
 
   async addPlayer(oPlayer: PlayerModel) {
-    await this.sheet.addRow({
+    const googleDate =
+      oPlayer.retrievalTimestamp === undefined
+        ? SpreadsheetAPI.getGoogleDate(new Date())
+        : SpreadsheetAPI.getGoogleDate(oPlayer.retrievalTimestamp);
+
+    const newRow: GoogleSpreadsheetRow = await this.sheet.addRow({
       tag: oPlayer.tag,
       name: oPlayer.name === undefined ? "" : oPlayer.name,
       clanTag: oPlayer.clanTag === undefined ? "" : oPlayer.clanTag,
@@ -61,10 +68,9 @@ export class PlayerSpreadsheet {
       warPreference:
         oPlayer.warPreference === undefined ? "" : oPlayer.warPreference,
       clanGames: oPlayer.clanGames === undefined ? "" : oPlayer.clanGames,
-      retrievalTimestamp:
-        oPlayer.retrievalTimestamp === undefined
-          ? new Date().toUTCString()
-          : oPlayer.retrievalTimestamp.toUTCString(),
+      retrievalTimestamp: googleDate,
     });
+
+    // TODO: format date column
   }
 }

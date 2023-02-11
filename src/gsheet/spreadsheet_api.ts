@@ -25,7 +25,7 @@ export class SpreadsheetAPI {
     await this.doc.loadInfo(); // loads document properties and worksheets
   }
 
-  async printDocInfo() {
+  public async printDocInfo() {
     console.log(this.doc.title);
 
     //  const dataSheet = this.doc.sheetsById("API Data");
@@ -36,5 +36,14 @@ export class SpreadsheetAPI {
       const dataSheet = this.doc.sheetsByIndex[i];
       console.log(dataSheet.sheetId, " = ", dataSheet.title);
     }
+  }
+
+  public static getGoogleDate(date: Date): number {
+    const googleStartDate = new Date("Dec 30, 1899 00:00:00");
+    let googleDate: number;
+    googleDate =
+      (date.getTime() - googleStartDate.getTime()) / (24 * 60 * 60 * 1000);
+
+    return googleDate;
   }
 }
