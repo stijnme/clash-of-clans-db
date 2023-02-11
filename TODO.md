@@ -55,3 +55,7 @@ Check:
 # Date handling in Google Spreadsheet
 
 See: https://developers.google.com/sheets/api/reference/rest/v4/DateTimeRenderOption
+
+# Hosting
+
+- [ ] Free Oracle cloud tier ?
