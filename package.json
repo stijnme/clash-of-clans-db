@@ -2,10 +2,10 @@
   "name": "coc-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "npx tsc --watch",
-    "start": "node dist/src/index.js",
+    "start": "node dist/src/server.js",
     "test": "npx mocha 'dist/test/**/*.js' --recursive"
   },
   "keywords": [
