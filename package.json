@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx tsc --watch",
     "start": "node dist/src/server.js",
-    "test": "npx mocha 'dist/test/**/*.js' --recursive"
+    "test": "npx mocha 'dist/test/*.js' --recursive"
   },
   "keywords": [
     "coc",
