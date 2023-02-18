@@ -1,7 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import { CocAPI } from "./api/coc_api";
 import { DbAPI } from "./db/db_api";
-import Config from "./config";
 import { PlayerController } from "./model/player/player.controller";
 import { ClanController } from "./model/clan/clan.controller";
 import { SpreadsheetAPI } from "../src/gsheet/spreadsheet_api";
@@ -15,7 +14,7 @@ app.get("/", async (req: Request, res: Response) => {
   // TODO: validate input
 
   // Init
-  const api = new CocAPI(Config.token);
+  const api = new CocAPI(process.env["token"]);
   const db = new DbAPI();
 
   const clan = new ClanController("#" + clanTag, api, db);

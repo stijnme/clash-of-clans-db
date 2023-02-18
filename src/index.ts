@@ -1,6 +1,5 @@
 import { CocAPI } from "./api/coc_api";
 import { DbAPI } from "./db/db_api";
-import Config from "./config";
 import { PlayerController } from "./model/player/player.controller";
 import { ClanController } from "./model/clan/clan.controller";
 //import { Sequelize, DataTypes } from 'sequelize';
@@ -9,7 +8,7 @@ import { PlayerSpreadsheet } from "./gsheet/player.data";
 
 async function main() {
   // Init
-  const api = new CocAPI(Config.token);
+  const api = new CocAPI(process.env["token"]);
   const db = new DbAPI();
 
   // TODO: replace hardcoded clan tag
