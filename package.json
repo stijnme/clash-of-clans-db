@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "build": "tsc",
     "dev": "npx tsc --watch",
     "start": "node dist/src/server.js",
     "test": "npx mocha 'dist/test/**/*.js' --recursive"
