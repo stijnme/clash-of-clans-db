@@ -8,8 +8,12 @@ export class SpreadsheetAPI {
   public doc: GoogleSpreadsheet;
 
   constructor() {
-    // or preferably, load that info from env vars / config instead of the file
-    this.creds = require("../clashofclans-database-4cb0ec1f29d0.json"); // authentication of the service user
+    // this.creds = require("../clashofclans-database-4cb0ec1f29d0.json"); // authentication of the service user
+    // load that info from env vars / config instead of the file
+    this.creds = {
+      private_key: process.env["GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY"],
+      client_email: process.env["GOOGLE_SERVICE_ACCOUNT"],
+    };
   }
 
   public async loadDoc(docId: string) {
