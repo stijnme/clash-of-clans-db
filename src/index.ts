@@ -8,7 +8,7 @@ import { PlayerSpreadsheet } from "./gsheet/player.data";
 
 async function main() {
   // Init
-  const api = new CocAPI(process.env["token"]);
+  const api = new CocAPI(process.env["COC_TOKEN"]);
   const db = new DbAPI();
 
   // TODO: replace hardcoded clan tag

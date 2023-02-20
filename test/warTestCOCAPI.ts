@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { Client } from "clashofclans.js";
 
-const client = new Client({ keys: [process.env["token"]] });
+const client = new Client({ keys: [process.env["COC_TOKEN"]] });
 
 async function main() {
   // describe("Retrieve player from clashofclans.js API", function () {

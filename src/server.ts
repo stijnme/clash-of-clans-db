@@ -14,7 +14,7 @@ app.get("/", async (req: Request, res: Response) => {
   // TODO: validate input
 
   // Init
-  const api = new CocAPI(process.env["token"]);
+  const api = new CocAPI(process.env["COC_TOKEN"]);
   const db = new DbAPI();
 
   const clan = new ClanController("#" + clanTag, api, db);

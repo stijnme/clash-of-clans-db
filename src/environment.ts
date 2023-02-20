@@ -3,8 +3,8 @@ import { ServiceAccountCredentials } from "google-spreadsheet";
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      token: string;
-      api: string;
+      COC_TOKEN: string;
+      COC_URI: string;
       GOOGLE_SERVICE_ACCOUNT: string;
       GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: string;
     }
