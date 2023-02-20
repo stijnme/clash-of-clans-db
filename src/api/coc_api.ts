@@ -7,7 +7,7 @@ export class CocAPI implements iAPI {
   private token: string;
   private url: string;
 
-  constructor(token: string, url = "https://api.clashofclans.com/v1") {
+  constructor(token: string, url = "https://cocproxy.royaleapi.dev/v1") {
     this.token = token;
     this.url = url;
   }
