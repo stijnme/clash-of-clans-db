@@ -4,7 +4,7 @@ import { DbAPI } from "../src/db/db_api";
 import { ClanController } from "../src/model/clan/clan.controller";
 
 // TODO: move to specific prepare function?
-const api = new CocAPI(process.env["token"]);
+const api = new CocAPI(process.env.token);
 
 describe("Retrieve clan from API", function () {
   it("Check that clan #20LCQ2CR8 is Yoshi Island", async function () {
