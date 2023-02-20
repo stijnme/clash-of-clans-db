@@ -10,8 +10,6 @@ export class CocAPI implements iAPI {
   constructor(token: string, url = "https://cocproxy.royaleapi.dev/v1") {
     this.token = token;
     this.url = url;
-
-    console.log("[I] CoCAPI - API token: ", this.token);
   }
 
   // TODO: return data with status code
