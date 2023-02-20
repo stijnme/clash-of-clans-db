@@ -47,6 +47,10 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: "List environment variables"
+        shell: bash
+        run: env
+
       - name: "Resolve Project Dependencies Using Npm"
         shell: bash
         run: |
