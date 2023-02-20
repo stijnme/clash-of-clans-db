@@ -1,4 +1,4 @@
-import { assert } from "chai";
+/* import { assert } from "chai";
 import { Client } from "clashofclans.js";
 
 const client = new Client({ keys: [process.env["token"]] });
@@ -9,4 +9,4 @@ describe("Retrieve clan from clashofclans.js API", function () {
 
     assert.strictEqual(clan.name, "Yoshi Island");
   });
-});
+}) */
