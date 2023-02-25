@@ -1,12 +1,12 @@
 {
-  "name": "coc-node",
+  "name": "coc-gsheet",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "build": "tsc",
     "dev": "npx tsc --watch",
-    "start": "node dist/server.js",
+    "start": "func start",
     "test": "npx mocha 'dist/test/**/*.js' --recursive"
   },
   "keywords": [
