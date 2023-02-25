@@ -59,3 +59,7 @@ See: https://developers.google.com/sheets/api/reference/rest/v4/DateTimeRenderOp
 # Hosting
 
 - [ ] Free Oracle cloud tier ?
+
+- [ ] Azure function? See:
+  - Function app: https://learn.microsoft.com/en-us/azure/azure-functions/shift-expressjs?tabs=typescript
+  - Schedule: https://learn.microsoft.com/en-us/azure/azure-functions/functions-create-scheduled-function
