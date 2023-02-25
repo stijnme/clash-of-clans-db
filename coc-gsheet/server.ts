@@ -12,54 +12,48 @@ const httpTrigger: AzureFunction = async function (
 ): Promise<void> {
   context.log("HTTP trigger function processed a request.");
   const docId: string = req.query.docId as string;
+  const sheetName: string = req.query.sheetName as string;
   const clanTag: string = req.query.clanTag as string;
 
   // TODO: validate input
-  const responseMessage =
-    "Processing request for:<UL>" +
-    "<LI>Google document id: " +
-    docId +
-    "<LI>Clan tag: " +
-    clanTag +
-    "<UL>";
   /*   const name = req.query.name || (req.body && req.body.name);
   const responseMessage = name
     ? "Hello, " + name + ". This HTTP triggered function executed successfully."
     : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
 
   */
+  const responseMessage = {
+    status: "Starting processing",
+    docId: docId,
+    sheetName: sheetName,
+    clanTag: clanTag,
+  };
+
   context.res = {
     // status: 200, /* Defaults to 200 */
     body: responseMessage,
   };
-};
+  //  context.res.set("Content-Type", "application/json");
 
-export default httpTrigger;
-
-/* app.get("/", async (req: Request, res: Response) => {
-  // Init
   const api = new CocAPI(process.env["COC_TOKEN"]);
-  const db = new DbAPI();
 
-  const clan = new ClanController("#" + clanTag, api, db);
+  const clan = new ClanController("#" + clanTag, api);
   await clan.get();
 
   if (clan.oClan.apiRetrieved) {
-    clan.save();
-
+    console.log("[D] server: Retrieved clan info");
     const gapi = new SpreadsheetAPI();
     await gapi.loadDoc(docId);
     const playerSheet = new PlayerSpreadsheet(gapi.doc);
-    await playerSheet.getSheet("API-PlayerData");
+    await playerSheet.getSheet(sheetName);
 
     // loop members
     if (clan.oClan.memberList) {
       for (const member of clan.oClan.memberList) {
         console.log("[I] Index - Found member: " + member.name);
-        const player = new PlayerController(member.tag, api, db);
+        const player = new PlayerController(member.tag, api);
         await player.get();
         if (player.oPlayer.apiRetrieved) {
-          player.save();
           // write to Google Spreadsheet
           await playerSheet.addPlayer(player.oPlayer);
         } else {
@@ -68,12 +62,6 @@ export default httpTrigger;
       }
     }
   }
+};
 
-  res.send(
-    "Received: <UL><LI>docId: " + docId + "<LI>clanTag: " + clanTag + "</UL>"
-  );
-});
-
-app.listen(8000, () => {
-  console.log("Example app listening on port 8000!");
-}) */
+export default httpTrigger;
