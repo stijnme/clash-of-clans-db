@@ -14,19 +14,36 @@ export class SpreadsheetAPI {
       private_key: process.env["GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY"],
       client_email: process.env["GOOGLE_SERVICE_ACCOUNT"],
     };
+
+    console.debug(
+      "[D] SpreadsheetAPI: using goole service account: " +
+        this.creds.client_email
+    );
   }
 
   public async loadDoc(docId: string) {
     this.doc = new GoogleSpreadsheet(docId);
 
     // TODO: try catch
-    await this.doc.useServiceAccountAuth(this.creds);
-    // or preferably, load that info from env vars / config instead of the file
-    // await this.doc.useServiceAccountAuth({
-    // client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    // private_key: process.env.GOOGLE_PRIVATE_KEY,
-    // });
-    await this.doc.loadInfo(); // loads document properties and worksheets
+    console.debug(
+      "[D] SpreadsheetAPI - loadDoc (" +
+        docId +
+        "): calling useServiceAccountAuth()"
+    );
+    try {
+      await this.doc.useServiceAccountAuth(this.creds);
+      // or preferably, load that info from env vars / config instead of the file
+      // await this.doc.useServiceAccountAuth({
+      // client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      // private_key: process.env.GOOGLE_PRIVATE_KEY,
+      // });
+      await this.doc.loadInfo(); // loads document properties and worksheets
+    } catch (error: any) {
+      console.error(
+        "[E] SpreadsheetAPI - loadDoc: error occurred when trying to login with the GOOGLE_SERVICE_ACCOUNT " +
+          error.message
+      );
+    }
   }
 
   public async printDocInfo() {
