@@ -1,6 +1,6 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
 import { CocAPI } from "./api/coc_api";
-import { DbAPI } from "./db/db_api";
+//import { DbAPI } from "./db/db_api";
 import { PlayerController } from "./model/player/player.controller";
 import { ClanController } from "./model/clan/clan.controller";
 import { SpreadsheetAPI } from "./gsheet/spreadsheet_api";
@@ -22,18 +22,6 @@ const httpTrigger: AzureFunction = async function (
     : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
 
   */
-  const responseMessage = {
-    status: "Starting processing",
-    docId: docId,
-    sheetName: sheetName,
-    clanTag: clanTag,
-  };
-
-  context.res = {
-    // status: 200, /* Defaults to 200 */
-    body: responseMessage,
-  };
-  //  context.res.set("Content-Type", "application/json");
 
   const api = new CocAPI(process.env["COC_TOKEN"]);
 
@@ -61,6 +49,17 @@ const httpTrigger: AzureFunction = async function (
         }
       }
     }
+
+    const responseMessage = {
+      status: "Processed",
+      docId: docId,
+      sheetName: sheetName,
+      clanTag: clanTag,
+    };
+    context.res = {
+      // status: 200, /* Defaults to 200 */
+      body: responseMessage,
+    };
   }
 };
 
