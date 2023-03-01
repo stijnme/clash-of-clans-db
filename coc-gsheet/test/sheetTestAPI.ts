@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { SpreadsheetAPI } from "../src/gsheet/spreadsheet_api";
+import { SpreadsheetAPI } from "../gsheet/spreadsheet_api";
 
 describe("Retrieve document info", function () {
   const gapi = new SpreadsheetAPI();
