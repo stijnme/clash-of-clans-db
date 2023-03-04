@@ -22,7 +22,16 @@ const httpTrigger: AzureFunction = async function (
     : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
 
   */
-
+  const responseMessage = {
+    status: "Started processing...",
+    docId: docId,
+    sheetName: sheetName,
+    clanTag: clanTag,
+  };
+  context.res = {
+    // status: 200, /* Defaults to 200 */
+    body: responseMessage,
+  };
   const api = new CocAPI(process.env["COC_TOKEN"]);
 
   const clan = new ClanController("#" + clanTag, api);
@@ -49,17 +58,6 @@ const httpTrigger: AzureFunction = async function (
         }
       }
     }
-
-    const responseMessage = {
-      status: "Processed",
-      docId: docId,
-      sheetName: sheetName,
-      clanTag: clanTag,
-    };
-    context.res = {
-      // status: 200, /* Defaults to 200 */
-      body: responseMessage,
-    };
   }
 };
 
