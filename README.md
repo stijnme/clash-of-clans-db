@@ -19,28 +19,30 @@ az account list-locations
 ```
 
 ```
-az group create --name ClashOfClans-Melxaco --location westeurope
+az group create --name <resource-group-name> --location westeurope
 ```
 
 ### Create storage account
 
 ```
-az storage account create --name cocmelxacostorage --location westeurope --resource-group ClashOfClans-Melxaco --sku Standard_LRS
+az storage account create --name <storage-account-name> --location westeurope --resource-group <resource-group-name> --sku Standard_LRS
 ```
 
 ### Create function app
 
 ```
-az functionapp create --resource-group ClashOfClans-Melxaco --consumption-plan-location westeurope --os-type Linux --runtime node --runtime-version 18 --functions-version 4 --name ClashOfClans-Melxaco --storage-account cocmelxacostorage
+az functionapp create --resource-group <resource-group-name> --consumption-plan-location westeurope --os-type Linux --runtime node --runtime-version 18 --functions-version 4 --name <function-app-name> --storage-account <storage-account-name>
 ```
 
 Remark: command failed, created the app manually on the Azure Portal
 
 ## Call Azure Function
 
-sheetName:
-docId:
-clanTag:
+Parameters:
+
+- `docId`: document id of Google Sheets
+- `sheetName`: the sheet name in the Google Sheets document. Will be created if it doesn't exist, else it will be appended.
+- `clanTag`: the Clash Of Clans clan tag, without the hashtag prefix
 
 Example request:
 
