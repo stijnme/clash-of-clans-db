@@ -20,7 +20,7 @@
 - [x] Improve code with Typescript
   - [x] Model declarations
   - [x] Proper imports
-- [ ] Schedule to run every x-hours
+- [x] Schedule to run every x-hours
 - [ ] Add cli interface
   - [ ] Or Discord bot?
 - [x] Replace `#` with `%23`
