@@ -49,3 +49,7 @@ Example request:
 ```
 http://localhost:7071/api/coc-gsheet?docId=10cRyo1IOVh5fQmpuH34JnVGYIIRWhvPe27WLjyXpBrw&sheetName=API-PlayerData&clanTag=20LCQ2CR8
 ```
+
+## Deploy to Azure
+
+This is automatically performed by merging into the main branch on GitHub: [deployments](https://github.com/stijnme/clash-of-clans-db/deployments)
